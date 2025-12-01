@@ -2,6 +2,9 @@
 tags:
   - feature
   - auth
+  - version/mvp
+  - version/v1.1
+  - version/v2.0
 name: Authentication
 status: "[[Statuses/Done]]"
 ---

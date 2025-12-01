@@ -2,6 +2,8 @@
 tags:
   - feature
   - ai
+  - version/mvp
+  - version/v1.1
 name: AI Pattern Recognition
 status: "[[Statuses/Done]]"
 ---
@@ -108,7 +110,7 @@ This feature requires modifications/additions to multiple parts of the app:
 ---
 
 ### 4. NEW: Plan Preview Screen (Auto-Detected)
-**Screen**: NEW - Similar to `1.07-workout-plan-preview.md` (See [1.07-workout-plan-preview.md](../designer/1.07-workout-plan-preview.md)) but for detected plans
+**Screen**: Uses unified Plan Preview (5.06) - See [5.06-plan-preview.md](../designer/5.06-plan-preview.md) with Auto-Detected context
 **Purpose**: Show user the detected plan structure before they accept
 **Trigger**: User taps "View Plan" in Dashboard detection banner
 **Components**:
@@ -385,7 +387,7 @@ Consistency: 78% → Trigger detection
 ### Plan Preview Screen (Auto-Detected)
 
 **Component**: `AutoDetectedPlanPreviewScreen.kt`
-**Similar to**: Workout Plan Preview (1.07) but for detected plans
+**Uses**: Unified Plan Preview (5.06) with Auto-Detected context
 
 **Top Bar**:
 - Back arrow (returns to Dashboard)
@@ -501,7 +503,7 @@ Consistency: 78% → Trigger detection
 | Component | Status | Assignee | Notes |
 |-----------|--------|----------|-------|
 | Detection Banner (Dashboard) | 🔴 Not Started | UX Designer | Need full spec |
-| Plan Preview Screen | 🔴 Not Started | UX Designer | Similar to 1.07 |
+| Plan Preview Screen | ✅ Uses 5.06 | UX Designer | Unified Plan Preview with contexts |
 | Onboarding Hint | 🔴 Not Started | UX Designer | Tooltip copy |
 | Backend API | 🔴 Not Started | Developer | Pattern detection service |
 | AI Integration | 🔴 Not Started | Developer | OpenAI API calls |

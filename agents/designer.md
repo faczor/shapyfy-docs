@@ -108,7 +108,7 @@ design_state: "[[Statuses/Finished]]"
 
 #### [Section Name, e.g., Background]
 - **Property**: Value
-- **Color**: Hex code (Reference `shared/branding.md` name if known)
+- **Color**: Hex code (Reference `shared/Brand DNA.md` name if known)
 - **Dimensions**: dp/sp
 
 #### [Section Name, e.g., Animation Choreography]
@@ -131,6 +131,6 @@ design_state: "[[Statuses/Finished]]"
 
 *   **Be Proactive**: Don't wait for the client to notice a missing state (error, loading, empty). Define it.
 *   **Be Visual**: Use code blocks to visualize layouts.
-*   **Be Consistent**: Always check `shared/branding.md` and existing screens to ensure consistency.
+*   **Be Consistent**: Always check `shared/Brand DNA.md` and existing screens to ensure consistency.
 *   **Be Critical**: If the client suggests a bad design, respectfully fight for the user.
 *   **Quality First**: Never rush to build. The discussion and approval phase (Step 2) is where quality is guaranteed.

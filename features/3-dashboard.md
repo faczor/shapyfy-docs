@@ -2,6 +2,7 @@
 tags:
   - feature
   - dashboard
+  - version/mvp
 name: Dashboard
 status: "[[Statuses/Done]]"
 ---

@@ -2,6 +2,8 @@
 tags:
   - feature
   - workout
+  - version/mvp
+  - version/v1.1
 name: Workout Process
 status: "[[Statuses/Done]]"
 ---
@@ -317,6 +319,44 @@ data class ExerciseSet(
 
 ---
 
+### UX Enhancements (2025-11-25 Review)
+**Priority:** Post-MVP, based on user feedback
+
+**Exercise Detail Screen Enhancements:**
+| Feature | Description | Rationale |
+|---------|-------------|-----------|
+| Rest Timer | Countdown timer after logging set (1-3 min configurable) | Expected feature in workout apps, currently users use phone timer |
+| Quick Weight Adjust | [-2.5] [weight] [+2.5] buttons for micro-adjustments | Faster than keyboard input for small changes |
+| Historical Progression | Show trend over time, not just "last workout" | Users want to see progress |
+| Plate Calculator | Show which plates to load on bar | Quality of life for barbell exercises |
+
+**Active Workout Screen Enhancements:**
+| Feature | Description | Rationale |
+|---------|-------------|-----------|
+| Last Set Preview | Show "Last: 80kg × 10" on exercise cards | Quick reference without tapping into detail |
+| Manual Reorder | Drag-to-reorder exercises after adding | Flexibility if user adds in wrong order |
+| Superset/Circuit Support | Group exercises for alternating sets | Common training method |
+
+**Exercise Detail → Next Exercise Flow:**
+| Feature | Description | Rationale |
+|---------|-------------|-----------|
+| "Continue to Next" Button | After finishing exercise, quick nav to next | Reduces round-trips to Active Workout hub |
+| Next Exercise Preview | Show "Next up: Bench Press" at bottom of screen | Context without leaving screen |
+
+**Workout Summary Screen Enhancements:**
+| Feature | Description | Rationale |
+|---------|-------------|-----------|
+| Workout Rating | "How was this workout?" with emoji scale | Subjective data for plan adaptation |
+| Notes Field | Free text for context ("felt weak", "new gym") | User context for future reference |
+| "Redo This Workout" | Quick action to start same workout again | Common for consistent routines |
+
+**Why Post-MVP:**
+- MVP flow is solid, no critical UX gaps
+- Gather real user feedback before adding complexity
+- Prioritize based on actual pain points, not assumptions
+
+---
+
 ## Technical Considerations
 
 ### Offline-First Architecture
@@ -351,6 +391,13 @@ All colors sourced from: `composeApp/src/commonMain/kotlin/com/shapyfy/design_sy
 ---
 
 ## Revision History
+
+### 2025-11-25: UX Review & Post-MVP Planning
+- ✅ **Reviewed:** Complete workout flow (Exercise Picker → Active Workout → Exercise Detail → Summary)
+- ✅ **Confirmed:** MVP specs are solid, no critical UX gaps
+- ✅ **Documented:** 10+ post-MVP enhancement opportunities (rest timer, supersets, workout rating, etc.)
+- ✅ **Deferred:** Rest timer, manual reorder, workout notes/rating - all post-MVP
+- ✅ **Decision:** Skipped exercise opacity stays at 60% (no change needed)
 
 ### 2025-01-05: Workflow Review & Critical UX Fixes
 - ✅ **Fixed:** Hide "Finish Workout" when 0 exercises (Issue #2)

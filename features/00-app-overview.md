@@ -2,6 +2,8 @@
 tags:
   - feature
   - overview
+  - version/mvp
+  - version/v1.1
 name: App Overview
 status: "[[Statuses/Done]]"
 ---

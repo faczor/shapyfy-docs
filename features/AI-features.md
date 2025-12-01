@@ -2,13 +2,199 @@
 tags:
   - feature
   - ai
+  - version/mvp
+  - version/v1.1
 name: AI Features Overview
-status: "[[Statuses/Done]]"
+status: "[[Statuses/In Progress]]"
 ---
 
 # AI Features Overview
 
 This document tracks AI feature ideas and concepts for Shapyfy.
+
+---
+
+## Recommendation Systems Overview (2025-11-21)
+
+Shapyfy has **three distinct recommendation contexts**. Each serves a different user moment:
+
+| #      | Context                      | When                          | What's Recommended             | Priority           |
+| ------ | ---------------------------- | ----------------------------- | ------------------------------ | ------------------ |
+| **R1** | Onboarding → Plan            | User completes onboarding     | Full personalized workout plan | ✅ **MVP**          |
+| **R2** | Plan Builder → Defaults      | User adds exercise to plan    | Sets, reps, weight defaults    | ✅ MVP (simplified) |
+| **R3** | Active Workout → Progression | User logs sets during workout | "Try +2.5kg today" suggestions | ❌ v1.1+            |
+
+### R1: Onboarding → AI Plan Recommendation (MVP)
+
+**Context:** User completes onboarding questions → AI dynamically generates a personalized workout plan.
+
+**Status:** ✅ **UX DESIGNED** — AI logic needs spec
+
+**Decision (2025-11-21):** **Option B — Dynamic AI Generation**
+- AI generates unique plans per user (not selecting from templates)
+- Plans are fully customized: exercises, sets, reps, structure
+- More flexible, more personalized
+
+---
+
+#### Designer Screens (DONE ✅)
+
+| Screen | File | Status |
+|--------|------|--------|
+| Onboarding Questions | [[designer/1.05-personalization]] | ✅ Done |
+| Loading State | [[designer/1.06-recommendations]] | ✅ Done |
+| Plan Options (3 plans) | [[designer/1.06-recommendations]] | ✅ Done |
+| Error State | [[designer/1.06-recommendations]] | ✅ Done |
+| Plan Preview | [[designer/5.06-plan-preview]] | ✅ Done |
+
+---
+
+#### Input Data — Tiered Personalization
+
+**Required Questions (Basic Tier)** — From 1.05-personalization.md:
+- [x] Main Goal: Build Muscle / Get Stronger / Stay Active / Lose Weight
+- [x] Equipment: Gym / Home / Bodyweight Only
+- [x] Experience: Beginner / Intermediate / Advanced
+- [x] Frequency: 2-6 days/week
+
+**Optional Questions (Advanced Tier)** — For deeper personalization:
+
+MVP Optional Questions (Decided 2025-11-21):
+- [ ] ⏱️ Time per session: 30min / 45min / 60min / 90min
+- [ ] 🩹 Injuries/Limitations: Shoulder / Knee / Back / Wrist / None
+- [ ] 🎯 Specific focus area: Arms / Chest / Back / Legs / Core / Glutes / Balanced
+- [ ] 🏋️ Detailed equipment: (Context-dependent on Gym/Home selection)
+  - If Gym: Barbell, Dumbbells, Cables, Machines, etc.
+  - If Home: Dumbbells, Resistance bands, Pull-up bar, Bench, etc.
+
+Post-MVP Optional Questions:
+- [ ] Training style: Intense & Fast / Slow & Controlled / Mix
+- [ ] Cardio integration: Include cardio / Weights only
+- [ ] Age range: Under 30 / 30-45 / 45+ (affects recovery recommendations)
+
+**UX for Optional Questions — Decision: Option B (Separate Screen)**
+
+Why Option B wins:
+- ✅ Clear choice: User explicitly opts in ("Yes, I want more personalization")
+- ✅ Respects time: Quick users skip, detail-oriented users customize
+- ✅ No overwhelm: Required questions stay clean and focused
+- ✅ Progressive disclosure: Classic UX pattern
+
+Flow:
+```
+1.05 Required Questions (4 questions)
+  ↓
+1.05b Fork Screen: "Quick plan or personalized?"
+  ↓ [Skip] ────────────────────┐
+  ↓ [Customize]                │
+  ↓                            │
+1.05c Optional Questions       │
+  ↓                            │
+  └────────────────────────────┘
+  ↓
+1.06 Loading → AI generates plans
+```
+
+**Designer Screen Needed:**
+- [ ] 1.05b — "Quick or Personalized?" fork screen
+- [ ] 1.05c — Optional questions screen
+
+**Status:** 🚧 IN PROGRESS — Discussion captured, design pending
+
+---
+
+#### Output
+
+- **3 AI-generated plans** (1 recommended + 2 alternatives)
+- Each plan includes:
+  - Plan name (AI-generated, e.g., "4-Day Upper/Lower Strength")
+  - Description (why this fits the user)
+  - Structure (days, exercises per day)
+  - Full exercise list with sets/reps/weight targets
+- "BEST FIT" badge on top recommendation
+
+---
+
+#### Open Questions (AI Logic)
+
+- [ ] What AI model? (GPT-4, Claude, custom?)
+- [ ] What's the prompt structure?
+- [ ] How do we ensure exercise variety?
+- [ ] How do we handle equipment constraints in generation?
+- [ ] How do we ensure progressive overload is built-in?
+- [ ] What's the fallback if AI generation fails? (Show pre-made templates?)
+
+---
+
+#### UX Flow (Confirmed)
+
+```
+1.05 Personalization (4 required questions)
+  ↓
+[Optional] Advanced questions (if user wants)
+  ↓
+1.06 Loading ("Finding your perfect plan...")
+  ↓
+1.06 Success (3 AI-generated plans)
+  ↓
+User taps plan → 5.06 Plan Preview
+  ↓
+User taps "Activate" → Dashboard Type 3
+```
+
+---
+
+### R2: Plan Builder → Smart Defaults (MVP - Simplified)
+
+**Context:** User adds exercise to their plan in Plan Builder (5.03/5.04) → System auto-fills default values.
+
+**Status:** ✅ **Partially specced** in [[designer/5.04-target-config]]
+
+**Current Logic (from 5.04):**
+```
+Priority Order:
+1. User history (last time they did this exercise) → Pre-fill
+2. Exercise metadata (static defaults per exercise) → Pre-fill
+3. Fallback: 3 sets × 10 reps @ Bodyweight
+```
+
+**Note:** This is NOT true AI — it's **static metadata** per exercise. Example:
+```json
+{
+  "exercise_id": "bench_press",
+  "default_sets": 3,
+  "default_reps_range": "8-12",
+  "notes": "Compound chest movement"
+}
+```
+
+**MVP Scope:**
+- ✅ Use history if available
+- ✅ Use static exercise metadata as fallback
+- ❌ NO dynamic AI for MVP (too complex)
+
+---
+
+### R3: Active Workout → Progression Recommendations (v1.1+)
+
+**Context:** User is logging sets during active workout → AI suggests progressive overload.
+
+**Status:** 💡 **Idea only** — Post-MVP feature
+
+**Concept:**
+- "Last session: 80kg × 10. Try 82.5kg today! 💪"
+- Based on: Linear progression, percentage increase, or RiR analysis
+
+**Why Post-MVP:**
+- Requires workout history data (users need to log first)
+- RiR tracking adds friction to set logging
+- Core workout flow must be solid first
+
+**See:** Section 3 below for detailed concept.
+
+---
+
+## Feature Ideas (Detailed)
 
 ---
 
@@ -186,4 +372,4 @@ Consistency: 85% → Suggest conversion
 
 ---
 
-**Last Updated**: 2025-11-16
+**Last Updated**: 2025-11-21

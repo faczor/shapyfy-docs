@@ -35,7 +35,7 @@ Welcome to the Shapyfy UX/UI design documentation. This directory contains compl
 - **[1.04-success-fork.md](designer/1.04-success-fork.md)** - Success celebration & path choice
 - **[1.05-personalization.md](designer/1.05-personalization.md)** - Personalization questions (Path A)
 - **[1.06-recommendations.md](designer/1.06-recommendations.md)** - Workout plan recommendations (Path A)
-- **[1.07-workout-plan-preview.md](designer/1.07-workout-plan-preview.md)** - Plan preview (Path A)
+- **[5.06-plan-preview.md](designer/5.06-plan-preview.md)** - Plan preview (Path A → now unified in Workout Plan feature)
 - **[1.08-dashboard-draft-banner.md](designer/1.08-dashboard-draft-banner.md)** - Draft banner (Path A)
 - **[1.09-exercise-picker.md](designer/1.09-exercise-picker.md)** - Exercise picker pointer (Path B)
 

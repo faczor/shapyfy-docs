@@ -2,6 +2,8 @@
 tags:
   - feature
   - dashboard
+  - version/mvp
+  - version/v1.1
 name: Dashboard Consistency Checklist
 status: "[[Statuses/Done]]"
 ---

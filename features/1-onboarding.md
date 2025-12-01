@@ -2,6 +2,7 @@
 tags:
   - client
   - feature
+  - version/mvp
 name: Onboarding
 status: "[[Statuses/Done]]"
 ---
@@ -44,7 +45,7 @@ New users face decision fatigue and confusion when opening fitness apps for the 
 **Path A Screens (Guided):**
 5. **Personalization Screen** → See [1.05-personalization.md](../designer/1.05-personalization.md)
 6. **Recommendations Loading/Success/Error** → See [1.06-recommendations.md](../designer/1.06-recommendations.md)
-7. **Workout Plan Preview** → See [1.07-workout-plan-preview.md](../designer/1.07-workout-plan-preview.md)
+7. **Workout Plan Preview** → See [5.06-plan-preview.md](../designer/5.06-plan-preview.md) (moved to Workout Plan feature)
 8. **Dashboard Draft Banner** → See [1.08-dashboard-draft-banner.md](../designer/1.08-dashboard-draft-banner.md)
 
 **Path B Screens (Custom):**
@@ -114,7 +115,7 @@ New users face decision fatigue and confusion when opening fitness apps for the 
 | 4    | Success + Fork         | [1.04-success-fork.md](../designer/1.04-success-fork.md)                       |
 | 5A   | Personalization        | [1.05-personalization.md](../designer/1.05-personalization.md)                 |
 | 6A   | Recommendations        | [1.06-recommendations.md](../designer/1.06-recommendations.md)                 |
-| 7A   | Plan Preview           | [1.07-workout-plan-preview.md](../designer/1.07-workout-plan-preview.md)       |
+| 7A   | Plan Preview           | [5.06-plan-preview.md](../designer/5.06-plan-preview.md)       |
 | 8A   | Dashboard Draft        | [1.08-dashboard-draft-banner.md](../designer/1.08-dashboard-draft-banner.md)   |
 | 5B   | Exercise Picker        | [1.09-exercise-picker.md](../designer/1.09-exercise-picker.md)                 |
 | 6B   | Active Workout         | [workout_process.md](2-workout_process.md#active_workout_redesigned) |

@@ -2,6 +2,8 @@
 tags:
   - feature
   - workout-plan
+  - version/mvp
+  - version/v1.1
 name: Workout Plan
 status: "[[Statuses/Done]]"
 ---
@@ -184,14 +186,14 @@ data class PlanDayAdherence(
 **Flow**:
 1. User answers personalization questions (1.05)
 2. AI recommends 3 workout plans (1.06)
-3. User selects one and previews it (1.07)
+3. User selects one and previews it (5.06)
 4. User can edit plan before accepting (modify exercises, targets)
 5. User accepts plan → Plan status: ACTIVE
 6. Dashboard transitions to Type 3 (shows active plan)
 
 **Screens**:
-- ✅ Already designed: 1.05, 1.06, 1.07
-- ⚠️ Need to extend 1.07: Add edit mode
+- ✅ Already designed: 1.05, 1.06, 5.06 (Plan Preview)
+- ✅ 5.06 redesigned with unified 3-context support (Onboarding, Active, Inactive)
 
 **Source Type**: `PlanSource.AI_RECOMMENDED`
 
@@ -212,7 +214,7 @@ data class PlanDayAdherence(
 
 **Screens**:
 - 🆕 Detection Banner (Dashboard component)
-- ✅ Plan Preview (reuse 1.07 with edit mode + AI badges)
+- ✅ Plan Preview (5.06 with Auto-Detected context + AI badges)
 
 **Source Type**: `PlanSource.AUTO_DETECTED`
 
@@ -259,7 +261,7 @@ data class PlanDayAdherence(
 - 🆕 `5.03-plan-builder-days`: List of days, reorder drag-and-drop, swipe to delete.
 - 🆕 `5.04-target-config`: Bottom sheet for setting sets/reps/weight per exercise.
 - ✅ `2.01-exercise-picker`: Reuse existing.
-- ✅ `1.07-workout-plan-preview`: Reuse for final review.
+- ✅ `5.06-plan-preview`: Unified preview for all contexts (Onboarding, Active, Inactive).
 
 **Source Type**: `PlanSource.MANUAL`
 
@@ -412,7 +414,7 @@ Plans:
 
 **Detailed Flow - Switching Plans**:
 1.  User taps an Inactive Plan (e.g., "Upper/Lower").
-2.  **Screen**: `1.07-workout-plan-preview` (Mode: Inactive).
+2.  **Screen**: `5.06-plan-preview` (Context: Inactive).
 3.  User taps "Start this Plan".
 4.  **Critical Confirmation**:
     *   "Activate 'Upper/Lower'?"
@@ -656,7 +658,7 @@ fun getExercisePreFill(
 
 | Screen | File | Status | Notes |
 |--------|------|--------|-------|
-| Plan Preview (AI Recommendations) | 1.07-workout-plan-preview.md | ✅ Complete | Need to extend with edit mode |
+| Plan Preview (Unified) | 5.06-plan-preview.md | ✅ Complete | Supports 3 contexts: Onboarding, Active, Inactive |
 | Dashboard Type 3 | 3-dashboard.md | ✅ Complete | Shows active plan |
 | Active Workout | 2.02-active-workout.md | ✅ Complete | Receives pre-loaded exercises |
 | Exercise Detail | 2.03-exercise-detail.md | ✅ Complete | Need to add plan info card |
@@ -975,7 +977,7 @@ All colors sourced from: `composeApp/src/commonMain/kotlin/com/shapyfy/design_sy
 - [3-dashboard.md](3-dashboard.md) - Dashboard Type 2 & Type 3 states
 - [2-workout_process.md](2-workout_process.md) - Active Workout integration
 - [AI-01-pattern-recognition.md](AI-01-pattern-recognition.md) - Auto-detection feature
-- [1.07-workout-plan-preview.md](../designer/1.07-workout-plan-preview.md) - Existing preview design
+- [5.06-plan-preview.md](../designer/5.06-plan-preview.md) - Unified plan preview (all contexts)
 
 
 ---
